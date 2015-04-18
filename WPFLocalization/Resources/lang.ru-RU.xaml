@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:v="clr-namespace:System;assembly=mscorlib">
+    <!-- Main window -->
+    <v:String x:Key="m_Title">Пример WPF локализации</v:String>
+    <v:String x:Key="m_lblHelloWorld">Привет мир!</v:String>
+    <v:String x:Key="m_menu_Language">Язык</v:String>
+    <v:Double x:Key="m_Number">10.5</v:Double>
+    
+</ResourceDictionary>

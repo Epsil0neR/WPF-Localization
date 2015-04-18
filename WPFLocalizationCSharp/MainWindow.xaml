@@ -1,0 +1,12 @@
+﻿<Window x:Class="WPFLocalizationCSharp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{DynamicResource m_Title}" Height="350" Width="525">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Background="{x:Null}">
+            <MenuItem x:Name="menuLanguage" Header="{DynamicResource m_menu_Language}" />
+        </Menu>
+        <Label Content="{DynamicResource m_lblHelloWorld}" />
+        <Slider Value="{DynamicResource m_Number}" IsEnabled="False" Maximum="50" Minimum="0" />
+    </DockPanel>
+</Window>
