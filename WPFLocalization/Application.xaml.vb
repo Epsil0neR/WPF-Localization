@@ -1,6 +1,6 @@
 ﻿Imports System.Globalization
 
-Class Application
+Public Class Application
     Private Shared m_Languages As New List(Of CultureInfo)
 
     Public Shared ReadOnly Property Languages As List(Of CultureInfo)
@@ -10,9 +10,13 @@ Class Application
     End Property
 
     Public Sub New()
+        InitializeComponent()
+
         m_Languages.Clear()
         m_Languages.Add(New CultureInfo("en-US")) 'Нейтральная культура для этого проекта
         m_Languages.Add(New CultureInfo("ru-RU"))
+
+        Language = My.Settings.DefaultLanguage
     End Sub
 
     'Евент для оповещения всех окон приложения
@@ -39,10 +43,10 @@ Class Application
             End Select
 
             '3. Находим старую ResourceDictionary и удаляем его и добавляем новую ResourceDictionary
-            Dim oldDict As ResourceDictionary = (From d In My.Application.Resources.MergedDictionaries _
+            Dim oldDict As ResourceDictionary = (From d In My.Application.Resources.MergedDictionaries
                                                  Where d.Source IsNot Nothing _
-                                                 AndAlso d.Source.OriginalString.StartsWith("Resources/lang.") _
-                                                 Select d).First
+                                                 AndAlso d.Source.OriginalString.StartsWith("Resources/lang.")
+                                                 Select d).FirstOrDefault
             If oldDict IsNot Nothing Then
                 Dim ind As Integer = My.Application.Resources.MergedDictionaries.IndexOf(oldDict)
                 My.Application.Resources.MergedDictionaries.Remove(oldDict)
@@ -56,10 +60,6 @@ Class Application
         End Set
     End Property
 
-
-    Private Sub Application_LoadCompleted(sender As Object, e As NavigationEventArgs) Handles Me.LoadCompleted
-        Language = My.Settings.DefaultLanguage
-    End Sub
     Private Shared Sub OnLanguageChanged(sender As Object, e As EventArgs) Handles MyClass.LanguageChanged
         My.Settings.DefaultLanguage = Language
         My.Settings.Save()

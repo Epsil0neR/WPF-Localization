@@ -34,6 +34,8 @@ namespace WPFLocalizationCSharp
             m_Languages.Clear();
             m_Languages.Add(new CultureInfo("en-US")); //Нейтральная культура для этого проекта
             m_Languages.Add(new CultureInfo("ru-RU"));
+
+            Language = WPFLocalizationCSharp.Properties.Settings.Default.DefaultLanguage;
         }
 
         //Евент для оповещения всех окон приложения
@@ -81,10 +83,6 @@ namespace WPFLocalizationCSharp
                 //4. Вызываем евент для оповещения всех окон.
                 LanguageChanged(Application.Current, new EventArgs());
             }
-        }
-        private void Application_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
-        {
-            Language = WPFLocalizationCSharp.Properties.Settings.Default.DefaultLanguage;
         }
 
         private void App_LanguageChanged(Object sender, EventArgs e)
