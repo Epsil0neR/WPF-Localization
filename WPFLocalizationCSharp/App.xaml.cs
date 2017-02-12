@@ -29,6 +29,7 @@ namespace WPFLocalizationCSharp
 
         public App()
         {
+            InitializeComponent();
             App.LanguageChanged += App_LanguageChanged;
 
             m_Languages.Clear();
